@@ -24,7 +24,6 @@
   .frame iframe { display:block; width:100%; height:100%; border:0; border-radius:8px; }
   .vertical { max-width:315px; aspect-ratio:9/16; }
   .horizontal { aspect-ratio:16/9; }
-  .missing { color:var(--muted); padding:24px 0; text-align:center; }
 </style>
 </head>
 <body>
@@ -41,27 +40,13 @@
 
   <section>
     <h2>Ролик 1</h2>
-    <div class="frame vertical" data-id="" data-title="test S"></div>
+    <div class="frame vertical"><iframe src="https://www.youtube.com/embed/laN0fuT8K6E" title="test S" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   </section>
 
   <section>
     <h2>Ролик 2</h2>
-    <div class="frame horizontal" data-id="HqQZv8UK3Pg" data-title="test H"></div>
+    <div class="frame horizontal"><iframe src="https://www.youtube.com/embed/HqQZv8UK3Pg" title="test H" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   </section>
 </main>
-<script>
-  // Код вставки — ровно тот, что выдаёт YouTube в «Поделиться → Встроить»: без автозапуска и без управления через API.
-  document.querySelectorAll('.frame').forEach((box) => {
-    const id = box.dataset.id;
-    if (!id) { box.innerHTML = '<div class="missing">Ролик ещё не загружен</div>'; return; }
-    const iframe = document.createElement('iframe');
-    iframe.src = 'https://www.youtube.com/embed/' + id;
-    iframe.title = box.dataset.title;
-    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-    iframe.allowFullscreen = true;
-    box.appendChild(iframe);
-  });
-</script>
 </body>
 </html>
